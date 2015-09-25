@@ -41,14 +41,14 @@ function initDomElements() {
 
 //[6,1,3,4]
 
-    //evt.preventDefault();
-    //alert(userInput);
-    //console.log(userInput);
-    //if (result) {
+//evt.preventDefault();
+//alert(userInput);
+//console.log(userInput);
+//if (result) {
 
-    //} else {
-      //alert('HALAAA!!!');
-    //}
+//} else {
+  //alert('HALAAA!!!');
+//}
 
 function printToDOM(sortedArray) {
   // attaches a paragraph tag for displaying text
@@ -56,3 +56,7 @@ function printToDOM(sortedArray) {
   para.innerHTML = sortedArray;
   container.appendChild(para);
 }
+
+// instanciate all functions
+var bubble = BubbleSort();
+var init = initDomElements();

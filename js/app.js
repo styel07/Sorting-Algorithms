@@ -33,9 +33,6 @@ function BubbleSort() {
   };
 }
 
-var bubble = BubbleSort();
-var init = initDomElements();
-
 // function MergeSort() {
 
 // }
