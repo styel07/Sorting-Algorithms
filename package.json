@@ -1,0 +1,23 @@
+{
+  "name": "sorting-algorithms",
+  "version": "1.0.0",
+  "description": "A sorting algorithm is an algorithm that puts elements of a list in a certain order.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/styel07/Sorting-Algorithms.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/styel07/Sorting-Algorithms/issues"
+  },
+  "homepage": "https://github.com/styel07/Sorting-Algorithms#readme",
+  "dependencies": {
+    "chai": "^3.3.0",
+    "mocha": "^2.3.3"
+  }
+}
