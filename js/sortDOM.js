@@ -65,7 +65,3 @@ function printToDOM(methodName, sortedArray) {
   container.appendChild(para);
 }
 
-// instanciate all functions
-var bubble = bubbleSort();
-var merge = mergeSort();
-var init = initDomElements();
