@@ -57,7 +57,7 @@ function mergeSort() {
         } else {
           result.push(right.shift());
         }
-        this.count++;
+        count++;
       }
 
       while (left.length) {
@@ -68,14 +68,22 @@ function mergeSort() {
         result.push(right.shift());
       }
 
+      printToDOM(name, array);
       return result;
     }
+
     //console.log('merge sort: ', mergeSort());
   } // end of sortM
 
   function returnCount() {
     return count;
   }
+
+  // function init() {
+  //   return "hello";
+  // }
+
+  // init();
 
   return {
     sortM : sortM,

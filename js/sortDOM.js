@@ -32,7 +32,7 @@ function initDomElements() {
 //  var result = Array.isArray(userInput);
     console.log('click');
     bubble.sortB(userInput);
-    merge.sortM(userInput);
+    merge.sortB(userInput);
 
   });
 
