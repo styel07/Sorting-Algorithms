@@ -42,10 +42,17 @@ describe('Bubble Sort', function() {
 });
 
 describe('Merge Sort', function() {
-  // var merge = MergeSort();
   it('should be a function', function() {
     MergeSort.should.be.a('function');
   });
+
+  var mSort =
+  describe('.sort', function() {
+    it('should be a function', function() {
+
+    });
+  });
+
 });
 
 describe('Insertion Sort', function() {
@@ -68,6 +75,5 @@ describe('Quick Sort', function() {
     QuickSort.should.be.a('function');
   });
 });
-
 
 mocha.run();

@@ -16,7 +16,7 @@ function initDomElements() {
   inputTextBox.id = 'inputArray';
   inputTextBox.value = 'Input array';
   inputTextBox.addEventListener('click', function() {
-    inputTextBox.value = '';
+    inputTextBox.value = '[6,3,1,4,8,9,12,2]';
   });
 
   //appends input filed to div inputArea
@@ -29,9 +29,10 @@ function initDomElements() {
   button.addEventListener('click', function(evt) {
     var userInput = document.querySelector('#inputArray').value;
     userInput = JSON.parse(userInput);
-//    var result = Array.isArray(userInput);
+//  var result = Array.isArray(userInput);
     console.log('click');
-    bubble.sort(userInput);
+    bubble.sortB(userInput);
+    merge.sortM(userInput);
 
   });
 
@@ -50,13 +51,21 @@ function initDomElements() {
   //alert('HALAAA!!!');
 //}
 
-function printToDOM(sortedArray) {
-  // attaches a paragraph tag for displaying text
+function printToDOM(methodName, sortedArray) {
+  // creates a p tag for the method name
+  var methodNameContainer = document.createElement('p');
+  methodNameContainer.innerHTML = methodName;
+
+  // creates a p tag for the sorted array
   var para = document.createElement('p');
   para.innerHTML = sortedArray;
+
+  //container.appendChild(para);
+  container.appendChild(methodNameContainer);
   container.appendChild(para);
 }
 
 // instanciate all functions
-var bubble = BubbleSort();
+var bubble = bubbleSort();
+var merge = mergeSort();
 var init = initDomElements();

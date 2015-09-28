@@ -1,11 +1,11 @@
-function BubbleSort() {
-  var array = [];
-  var count = 0;
+function bubbleSort() {
 
-  function sort(array) {
+  var count = 0;
+  var name = 'Bubble Sort:';
+
+  function sortB(array) {
     var swapped;
     do {
-      console.log('sorting');
       swapped = false;
       for (var i = 0; i < array.length - 1; i++) {
         if (array[i] > array[i + 1]) {
@@ -17,8 +17,9 @@ function BubbleSort() {
         }
       }
     } while (swapped);
+
     // call a function that writes to the DOM
-    printToDOM(array);
+    printToDOM(name, array);
     return array;
   }
 
@@ -27,99 +28,125 @@ function BubbleSort() {
   }
 
   return {
-    sort : sort,
+    sortB : sortB,
     count : returnCount
   };
 }
 
-var a = [34, 203, 3, 746, 200, 984, 198, 764, 9];
+function mergeSort() {
 
-function mergeSort(arr) {
   var count = 0;
+  var name = 'Merge Sort:';
+
+  function sortM(array) {
+    if (array.length < 2)
+        return array;
+
+    var middle = parseInt(array.length / 2);
+    var left   = array.slice(0, middle);
+    var right  = array.slice(middle, array.length);
+
+    return merge(mergeSort(left), mergeSort(right));
+
+    function merge(left, right) {
+      var result = [];
+
+      while (left.length && right.length) {
+        if (left[0] <= right[0]) {
+          result.push(left.shift());
+        } else {
+          result.push(right.shift());
+        }
+        this.count++;
+      }
+
+      while (left.length) {
+        result.push(left.shift());
+      }
+
+      while (right.length) {
+        result.push(right.shift());
+      }
+
+      return result;
+    }
+    //console.log('merge sort: ', mergeSort());
+  } // end of sortM
 
   function returnCount() {
     return count;
   }
 
-  if (arr.length < 2)
-      return arr;
+  return {
+    sortM : sortM,
+    count : returnCount
+  };
+}// end of merge sort
 
-  var middle = parseInt(arr.length / 2);
-  var left   = arr.slice(0, middle);
-  var right  = arr.slice(middle, arr.length);
+//Given arrayay of unsorted numbers
+var array = [2, 7, 4, 1, 9, 5];
 
-  return merge(mergeSort(left), mergeSort(right));
+function insertionSort (array) {
+//Creating a for loop to keep the sort going till it reaches array.length (end of array)
+  for (var i = 0; i < array.length; i++) {
+    // assign the current array to our selected (we will be using this to compare)
+    var currentSelected = array[i];
+    //Our loop to keep comparing the currentSelected to the previous index, if the currentSelected
+    // is less than the previous index, they will swap places. If currentSelected is higher, it will stay in place.
+    for (var comparingIndex = i; comparingIndex > 0 && currentSelected < array[comparingIndex - 1]; comparingIndex--)
+    //moving down the line
+    array[comparingIndex] = array[comparingIndex - 1];
+    // comparingIndex becomes our current selected
+    array[comparingIndex] = currentSelected;
+  }
+  //exit the loop
+  return array;
 }
-
-function merge(left, right) {
-  var result = [];
-
-  while (left.length && right.length) {
-    if (left[0] <= right[0]) {
-      result.push(left.shift());
-    } else {
-      result.push(right.shift());
-    }
-    this.count++;
-  }
-
-  while (left.length) {
-    result.push(left.shift());
-  }
-
-  while (right.length) {
-    result.push(right.shift());
-  }
-
-  return result;
-
-}
-console.log('merge sort: ', mergeSort(a));
-
-function insertionSort (bArray) {
-  for (var i = 0; i < bArray.length; i++) {
-      var k = bArray[i];
-      for (var j = i; j > 0 && k < bArray[j - 1]; j--)
-          bArray[j] = bArray[j - 1];
-      bArray[j] = k;
-  }
-  return console.log('insertion: ', bArray);
-}
+insertionSort(array);
+console.log('Insertion Sort: ', array);
 
 var a = [4, 65, 2, -31, 0, 99, 83, 782, 1];
 insertionSort(a);
-document.write(a.join(" "));
+//document.write(a.join(" "));
 
-var array = [56,4,35,63,4,2,63,2,14,1];
+// SELECTION SORT
+
+// Given Array of unsorted numbers.
+var array = [2, 7, 4, 1, 9, 5];
 
 function selectionSort(array) {
-
-  for (var i = 0; i < array.length; i++) { //Number of passes
-    var min = i; //min holds the current minimum number position for each pass; i holds the Initial min number
-    for (var j = i + 1; j < array.length; j++) { //Note that j = i + 1 as we only need to go through unsorted array
-      if (array[j] < array[min]) { //Compare the numbers
-        min = j; //Change the current min number position if a smaller num is found
+  //Creating a loop for the index
+  for (i = 0; i < array.length; i++) {
+    //Using index 0 as our min since that is our first number
+    var min = i;
+    //Creating a loop for the index of the next number
+    for (var nextNum = i + 1; nextNum < array.length; nextNum++) {
+      //Checking if the value of the nextNum is less than the current min
+      if (array[nextNum] < array[min]) {
+        //Assign nextNum to the new min
+        min = nextNum;
       }
     }
-    if (min != i) { //After each pass, if the current min num != initial min num, exchange the position.
-      //Swap the numbers
-      var tmp = array[i];
-      array[i] = array[min];
-      array[min] = tmp;
-    }
+    //Creating a temporary value to store [i]
+    var tmp = array[i];
+    //Assigning the min to [i]
+    array[i] = array[min];
+    //Assigning tmp to our min
+    array[min] = tmp;
   }
+  return array;
 }
-console.log('selection sort: ', selectionSort(array));
-
-var c = [47,49,5,99,4,5,63,2,8,43];
+//Console log sorted array
+console.log('Selection Sort:', selectionSort(array));
+var c = [47,49,5,99,4,5,63,2,4,43];
 
 function quicksort(arr)
 {
   if (arr.length == 0)
       return [];
 
-  var left = [];
-  var right = [];
+  var left = new Array();
+  var right = new Array();
   var pivot = arr[0];
 
   for (var i = 1; i < arr.length; i++) {
