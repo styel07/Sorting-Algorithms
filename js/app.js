@@ -38,58 +38,57 @@ function mergeSort() {
   var count = 0;
   var name = 'Merge Sort:';
 
-  function sortM(array) {
-    if (array.length < 2)
-        return array;
+  function start(array) {
+
+    if (array.length < 2) {
+      return array;
+    }
 
     var middle = parseInt(array.length / 2);
     var left   = array.slice(0, middle);
     var right  = array.slice(middle, array.length);
 
-    return merge(mergeSort(left), mergeSort(right));
+    var sortedArray = merge(start(left), start(right));
 
-    function merge(left, right) {
-      var result = [];
+    return sortedArray;
+    // return merge(start(left), start(right));
 
-      while (left.length && right.length) {
-        if (left[0] <= right[0]) {
-          result.push(left.shift());
-        } else {
-          result.push(right.shift());
-        }
-        count++;
-      }
+    printToDOM(name, sortedArray);
 
-      while (left.length) {
+  }
+
+  function merge(left, right) {
+    var result = [];
+
+    while (left.length && right.length) {
+      if (left[0] <= right[0]) {
         result.push(left.shift());
-      }
-
-      while (right.length) {
+      } else {
         result.push(right.shift());
       }
-
-      printToDOM(name, array);
-      return result;
+      count++;
     }
 
-    //console.log('merge sort: ', mergeSort());
-  } // end of sortM
+    while (left.length) {
+      result.push(left.shift());
+    }
+
+    while (right.length) {
+      result.push(right.shift());
+    }
+
+    return result;
+  }
 
   function returnCount() {
     return count;
   }
 
-  // function init() {
-  //   return "hello";
-  // }
-
-  // init();
-
   return {
-    sortM : sortM,
+    start : start,
     count : returnCount
   };
-}// end of merge sort
+}
 
 //Given arrayay of unsorted numbers
 var array = [2, 7, 4, 1, 9, 5];

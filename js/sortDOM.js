@@ -16,7 +16,7 @@ function initDomElements() {
   inputTextBox.id = 'inputArray';
   inputTextBox.value = 'Input array';
   inputTextBox.addEventListener('click', function() {
-    inputTextBox.value = '[6,3,1,4,8,9,12,2]';
+    inputTextBox.value = '[65,3,11,43,89,9,12,2]';
   });
 
   //appends input filed to div inputArea
@@ -30,9 +30,9 @@ function initDomElements() {
     var userInput = document.querySelector('#inputArray').value;
     userInput = JSON.parse(userInput);
 //  var result = Array.isArray(userInput);
-    console.log('click');
+//    console.log('click');
     bubble.sortB(userInput);
-    merge.sortB(userInput);
+    merge.start(userInput);
 
   });
 
