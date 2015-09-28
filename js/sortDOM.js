@@ -9,7 +9,6 @@ function initDomElements() {
   // attaches inputArea to container
   container.appendChild(divInputArea);
 
-
   // creates input forms
   // creates input box for user to input and array
   var inputTextBox = document.createElement('input');
@@ -29,11 +28,11 @@ function initDomElements() {
   button.addEventListener('click', function(evt) {
     var userInput = document.querySelector('#inputArray').value;
     userInput = JSON.parse(userInput);
-//  var result = Array.isArray(userInput);
-//    console.log('click');
+    // var result = Array.isArray(userInput);
     bubble.sortB(userInput);
     merge.start(userInput);
-
+    insertion.sortI(userInput);
+    selection.sortS(userInput);
   });
 
   // appends button to div inputArea
